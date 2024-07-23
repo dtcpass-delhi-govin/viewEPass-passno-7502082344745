@@ -38,29 +38,18 @@
                                     blink.style.opacity = (blink.style.opacity == 0 ? 2 : 0);
                                 }, 1000);
                             </script>
-                            <label id ="validity" class="validation"><b>Valid from <b id = "date-start">04/06/2024</b> to <b id = "date-end">03/07/2024</b></b></label>
-                            <script type="text/javascript">
+                            <label id ="validity" class="validation"> <b>Valid from <span id="date-start"></span> to <span id="date-end"></span></b></label>
+                            <script>
                                 // Get the current date
-                                var currentDate = new Date();
-                            
-                                // Assuming change_date_start and change_date_end are Date objects or can be parsed into Date objects
-                                var change_date_start = new Date(document.getElementById('date-start').value);
-                                var change_date_end = new Date(document.getElementById('date-end').value);
-                            
-                                // Check if change_date_end is before current date
-                                if (change_date_end < currentDate) {
-                                    // Increase month of both change_date_start and change_date_end
-                                    change_date_start.setMonth(change_date_start.getMonth() + 1);
-                                    change_date_end.setMonth(change_date_end.getMonth() + 1);
-                            
-                                    // Format the dates back to your desired format (e.g., MM/DD/YYYY)
-                                    var formatted_start = change_date_start.getDate() + '/' +( change_date_start.getMonth() + 1) + '/' + change_date_start.getFullYear();
-                                    var formatted_end = change_date_start.getDate() + '/' + change_date_end.getDate() + '/' + change_date_end.getFullYear();
-                            
-                                    // Assuming you want to update the DOM elements with the new dates
-                                    document.getElementById('date-start').textContent = formatted_start;
-                                    document.getElementById('date-end').textContent = formatted_end;
-                                }
+                                const currentDate = new Date();
+                        
+                                // Calculate the end date (1 month later)
+                                const endDate = new Date(currentDate);
+                                endDate.setMonth(endDate.getMonth() + 1);
+                        
+                                // Update the month portion of the displayed dates
+                                document.getElementById("date-start").textContent = `${currentDate.getDate()-1}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+                                document.getElementById("date-end").textContent = `${endDate.getDate()-2}/${endDate.getMonth() + 1}/${endDate.getFullYear()}`;
                             </script>
 
                         </td>
