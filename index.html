@@ -38,7 +38,31 @@
                                     blink.style.opacity = (blink.style.opacity == 0 ? 2 : 0);
                                 }, 1000);
                             </script>
-                            <label class="validation"><b>Valid from 04/06/2024 to 03/08/2024</b></label>
+                            <label id ="validity" class="validation"><b>Valid from <b id = "date-start">04/06/2024</b> to <b id = "date-end">03/07/2024</b></b></label>
+                            <script type="text/javascript">
+                                // Get the current date
+                                var currentDate = new Date();
+                            
+                                // Assuming change_date_start and change_date_end are Date objects or can be parsed into Date objects
+                                var change_date_start = new Date(document.getElementById('date-start').value);
+                                var change_date_end = new Date(document.getElementById('date-end').value);
+                            
+                                // Check if change_date_end is before current date
+                                if (change_date_end < currentDate) {
+                                    // Increase month of both change_date_start and change_date_end
+                                    change_date_start.setMonth(change_date_start.getMonth() + 1);
+                                    change_date_end.setMonth(change_date_end.getMonth() + 1);
+                            
+                                    // Format the dates back to your desired format (e.g., MM/DD/YYYY)
+                                    var formatted_start = (change_date_start.getMonth() + 1) + '/' + change_date_start.getDate() + '/' + change_date_start.getFullYear();
+                                    var formatted_end = (change_date_end.getMonth() + 1) + '/' + change_date_end.getDate() + '/' + change_date_end.getFullYear();
+                            
+                                    // Assuming you want to update the DOM elements with the new dates
+                                    document.getElementById('date-start').value = formatted_start;
+                                    document.getElementById('date-end').value = formatted_end;
+                                }
+                            </script>
+
                         </td>
                     </tr>
                     <tr>
@@ -55,7 +79,7 @@
         </div>
     </div>
     <footer>
-        <p class="barnd-name text-ubold" style="color:black;"> <b>Copyright ©  - Delhi e-Governance Society</b>&nbsp;<span id="copyright-year">2023</span></p>
+        <p class="barnd-name text-ubold" style="color:black;"> <b>Copyright ©  - Delhi e-Governance Society</b>&nbsp;<span id="copyright-year">2024</span></p>
     </footer>
 </body>
 
