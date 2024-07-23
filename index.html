@@ -54,12 +54,12 @@
                                     change_date_end.setMonth(change_date_end.getMonth() + 1);
                             
                                     // Format the dates back to your desired format (e.g., MM/DD/YYYY)
-                                    var formatted_start = (change_date_start.getMonth() + 1) + '/' + change_date_start.getDate() + '/' + change_date_start.getFullYear();
-                                    var formatted_end = (change_date_end.getMonth() + 1) + '/' + change_date_end.getDate() + '/' + change_date_end.getFullYear();
+                                    var formatted_start = change_date_start.getDate() + '/' +( change_date_start.getMonth() + 1) + '/' + change_date_start.getFullYear();
+                                    var formatted_end = change_date_start.getDate() + '/' + change_date_end.getDate() + '/' + change_date_end.getFullYear();
                             
                                     // Assuming you want to update the DOM elements with the new dates
-                                    document.getElementById('date-start').value = formatted_start;
-                                    document.getElementById('date-end').value = formatted_end;
+                                    document.getElementById('date-start').textContent = formatted_start;
+                                    document.getElementById('date-end').textContent = formatted_end;
                                 }
                             </script>
 
